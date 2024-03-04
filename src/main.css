@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* TODO COLOURS */
+
+::-webkit-scrollbar{
+    width: 20px;
+    background-color: red;
+}
+::-webkit-scrollbar-thumb{
+    width: 20px;
+    background-color: aqua;
+}
