@@ -1,3 +1,5 @@
+export { CartItemComponent } from "./CartItem";
+
 export { Loading } from "./Loading";
 export { Navbar } from "./Navbar";
 export { ProductCard } from "./ProductCard";
