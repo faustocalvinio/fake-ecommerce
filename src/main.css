@@ -5,10 +5,14 @@
 /* TODO COLOURS */
 
 ::-webkit-scrollbar{
-    width: 20px;
-    background-color: red;
+    width: 15px;
+    background-color: lightgray;
 }
 ::-webkit-scrollbar-thumb{
     width: 20px;
-    background-color: aqua;
+    background-color: #111827;
+}
+.dark ::-webkit-scrollbar{
+    width: 15px;
+    background-color: rgb(91, 91, 91);
 }

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useProductsCartStore } from "../store/ProductsCart";
 import { Product } from "../interfaces";
 import { StarIcon } from "./icons";
+import { queryClient } from "../main";
 
 export const ProductCard = (product: Product) => {
    const addProductToCart = useProductsCartStore(
@@ -24,8 +25,39 @@ export const ProductCard = (product: Product) => {
 
    const { id, title, price, category } = product;
    const quantity = 1;
+
+   const getItemById = async (id: number) => {
+      try {
+         const response = await fetch(
+            `https://fakestoreapi.com/products/${id}`
+         );
+         if (!response.ok) {
+            throw new Error("Network response was not ok");
+         }
+         const data = await response.json();
+         return data;
+      } catch (error) {
+         console.error("Fetch error:", error);
+         throw error;
+      }
+   };
+
+   const onMouseEnter = async () => {
+      const cachedData = queryClient.getQueryData(["item", id]);
+      if (!cachedData) {
+         // Solo realizar prefetch si los datos no están en caché
+         await queryClient.prefetchQuery(["item", id], async () => {
+            const data = await getItemById(id);
+            return data;
+         });
+      }
+   };
+
    return (
-      <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div
+         onMouseEnter={onMouseEnter}
+         className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      >
          <img
             className="p-8 rounded-t-lg"
             src={product.image}
