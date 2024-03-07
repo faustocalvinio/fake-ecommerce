@@ -26,7 +26,10 @@ export const SkeletonProduct = () => {
                </svg>
                <span className="sr-only">Loading...</span>
             </div>
-         </div>         
+         </div>
+         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white underline hover:text-gray-300 text-start w-full mb-4">
+            Lorem Ipsum
+         </h5>
          <div className="flex w-full">
             <StarIcon completed={false} />
             <StarIcon completed={false} />

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import type { CartItem } from "../interfaces";
 import { useProductsCartStore } from "../store/ProductsCart";
+import toast from "react-hot-toast";
 
 export const CartItemComponent = ({
    category,
@@ -13,11 +14,17 @@ export const CartItemComponent = ({
       (state) => state.removeProduct
    );
 
+   function removeHandler() {
+      removeProductFromCart(id);
+      toast.error(`Product ${title.slice(0, 20)} successfully removed`, {
+         className: "dark:bg-black dark:text-white border dark:border-gray-600",
+         duration: 2000,
+      });
+   }
+
    return (
       <tr>
-         <td className="p-2">
-            <input type="checkbox" className="h-5 w-5" value="id-1" />
-         </td>
+         <td className="p-2"></td>
          <td className="p-2 flex flex-col">
             <Link
                to={`/id/${id}`}
@@ -35,7 +42,7 @@ export const CartItemComponent = ({
          </td>
          <td className="p-2">
             <div className="flex justify-center">
-               <button onClick={() => removeProductFromCart(id)}>
+               <button onClick={() => removeHandler()}>
                   <svg
                      className="h-8 w-8 rounded-full p-1 hover:bg-gray-100 hover:text-blue-600 transition-all"
                      fill="none"
@@ -44,9 +51,9 @@ export const CartItemComponent = ({
                      xmlns="http://www.w3.org/2000/svg"
                   >
                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                      ></path>
                   </svg>

@@ -5,7 +5,7 @@ import { CartIcon, GhostIcon } from "./icons";
 export const Navbar = () => {
    const cart = useProductsCartStore((state) => state.cart);
    return (
-      <nav className="bg-white border-gray-200 dark:bg-gray-900 z-20 fixed top-0 w-full">
+      <nav className="bg-white border-gray-200 dark:bg-gray-900 z-20 fixed top-0 w-full ">
          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link
                to={"/"}
@@ -17,10 +17,16 @@ export const Navbar = () => {
                </span>
             </Link>
             <Link to={`/cart`} className="flex md:order-2">
-               <CartIcon />
-               <span className="text-white text-sm mt-[-5px] px-2">
-                  {cart.length}
-               </span>
+               {cart.length > 0 ? (
+                  <>
+                     <CartIcon empty={false} />
+                     <span className="text-white text-sm mt-[-5px] px-2 font-serif">
+                        {cart.length}
+                     </span>
+                  </>
+               ) : (
+                  <CartIcon empty />
+               )}
             </Link>
             <div
                className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
@@ -35,7 +41,7 @@ export const Navbar = () => {
                      >
                         Home
                      </Link>
-                  </li>                  
+                  </li>
                </ul>
             </div>
          </div>

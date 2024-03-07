@@ -1,3 +1,4 @@
+import toast, { Toaster } from "react-hot-toast";
 import { CartItemComponent } from "../components";
 import { CartItem } from "../interfaces";
 import { useProductsCartStore } from "../store/ProductsCart";
@@ -10,6 +11,14 @@ export const CartPage = () => {
       state.getSummaryInformation()
    );
 
+   function cleanCartHandler() {
+      cleanCart();
+      toast.success(`Cart successfully cleaned`, {
+         className: "dark:bg-black dark:text-white border dark:border-gray-600",
+         duration: 2000,
+      });
+   }
+
    return (
       <>
          <section className=" bg-gray-100 px-4 text-gray-600 antialiased w-full dark:bg-slate-700 dark:text-white">
@@ -20,7 +29,7 @@ export const CartPage = () => {
                         Cart
                      </h1>
                      <button
-                        onClick={() => cleanCart()}
+                        onClick={cleanCartHandler}
                         className="text-white bg-red-700 flex items-center gap-2 px-2 py-1 rounded-lg hover:opacity-85 transition-opacity"
                      >
                         Clean
@@ -79,7 +88,7 @@ export const CartPage = () => {
 
                   <div className="flex justify-end space-x-4 border-t border-gray-100 px-5 py-4 text-2xl font-bold">
                      <div>Total</div>
-                     <div className="text-blue-600 dark:text-blue-900">
+                     <div className="text-green-400 ">
                         $ <span>{subTotal.toFixed(2)}</span>
                      </div>
                   </div>
@@ -94,6 +103,7 @@ export const CartPage = () => {
                </div>
             </div>
          </section>
+         <Toaster />
       </>
    );
 };

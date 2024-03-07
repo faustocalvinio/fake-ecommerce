@@ -1,8 +1,9 @@
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { queryClient } from "../main";
-import { Loading, ProductCard } from "../components";
+import { Loading, ProductPageCard } from "../components";
 import { Product } from "../interfaces";
+import { Return } from "../components/icons";
 
 interface ItemData {
    item: Product;
@@ -30,7 +31,7 @@ export const ProductPage = () => {
    const cachedData = queryClient.getQueryData(["item", id]);
 
    // Usa los datos en caché si están disponibles
-   const { data, isLoading, isSuccess, isError } = useQuery<ItemData, Error>(
+   const { data, isLoading, isSuccess } = useQuery<ItemData, Error>(
       ["item", id],
       async () => await getItemById(id),
       {
@@ -43,23 +44,17 @@ export const ProductPage = () => {
 
    if (isSuccess)
       return (
-         <>
-            <div>ProductPage</div>
-            <h1>{JSON.stringify(id)}</h1>
-            <h2>{JSON.stringify(data)}</h2>
-            {/* <ProductCard
-               // category={data.item.category}
-               category=""
-               id={data.item.id}
-               title={data.item.title}
-               price={data.item.price}
-               description={data.item.description}
-               image={data.item.image}
-               rating={{
-                  rate: data.item.rating.rate,
-                  count: data.item.rating.count,
-               }}
-            /> */}
-         </>
+         <section className="mt-20 w-full min-h-screen text-white flex justify-center items-center flex-col">
+            <Link
+               className="absolute top-20 left-10 bg-blue-600 text-white py-1 px-2 rounded-lg ml-14 flex w-fit gap-2 hover:opacity-70 transition-opacity"
+               to={"/"}
+            >
+               <Return />
+               Return Home
+            </Link>
+            <div className="div mx-auto">
+               <ProductPageCard {...(data as unknown as Product)} />
+            </div>
+         </section>
       );
 };
