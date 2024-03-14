@@ -6,12 +6,13 @@ import { ReactQueryDevtools } from "react-query/devtools";
 export const queryClient = new QueryClient({
    defaultOptions: {
       queries: {
-         staleTime:  60 * 10000,
+         staleTime: 300000,
+         cacheTime: 300000,
       },
    },
 });
-
-ReactDOM.createRoot(document.getElementById("root")!).render(
+const root = ReactDOM.createRoot(document.getElementById("root")!);
+root.render(
    <QueryClientProvider client={queryClient}>
       <App />
       <ReactQueryDevtools initialIsOpen />

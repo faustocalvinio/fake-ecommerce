@@ -3,15 +3,20 @@ import { ProductCard } from "./";
 
 import { Product } from "../interfaces";
 import { SkeletonProduct } from "./SkeletonProduct";
+import { queryClient } from "../main";
 
 export const ProductsList = () => {
-   const { data, isLoading, isError } = useQuery("products", async () => {
+   const { data, isLoading, isError } =  useQuery("products", async () => {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       const response = await fetch("https://fakestoreapi.com/products");
       if (!response.ok) {
          throw new Error("Network response was not ok");
       }
       return response.json();
+   }, {
+      onSuccess: (data) => {
+         queryClient.setQueryData("products", data);
+      },
    });
    if (isLoading)
       return (

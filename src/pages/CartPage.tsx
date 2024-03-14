@@ -21,7 +21,7 @@ export const CartPage = () => {
 
    return (
       <>
-         <section className=" bg-gray-100 px-4 text-gray-600 antialiased w-full dark:bg-slate-700 dark:text-white">
+         <section className=" bg-gray-100 px-4 text-gray-600 antialiased w-full dark:bg-slate-700 dark:text-white mt-20">
             <div className="flex h-full w-full flex-col justify-center bg-gray-100 dark:bg-slate-700">
                <div className="mx-auto w-full  max-w-2xl rounded-sm border border-gray-200 bg-white shadow-lg dark:bg-slate-500">
                   <header className="border-b border-gray-100 px-5 py-4 flex justify-between">

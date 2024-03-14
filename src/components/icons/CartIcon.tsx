@@ -19,6 +19,7 @@ export const CartIcon = ({ empty = true }) => {
             xmlns="http://www.w3.org/2000/svg"
             width="25"
             height="25"
+            className="mr-4"
             viewBox="0 0 16 16"
          >
             <g fill="#ffffff">
