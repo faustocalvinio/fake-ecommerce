@@ -25,8 +25,8 @@ export const SinPrefetch = () => {
 
    // Verifica si hay datos y renderiza la página en consecuencia
    return (
-      <div className="px-4 mt-20">
-         <h1>Other Page</h1>
+      <div className="px-4 mt-20 mx-auto max-w-[1280px]">
+         <h1 className="text-white">Products sin prefetch al hacer hover</h1>
          {productsData ? (
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                {productsData.map((product: Product) => (
@@ -70,7 +70,7 @@ export const SinPrefetch = () => {
                ))}
             </div>
          ) : (
-            <p>No products data available</p>
+            <p className="text-red-600">No products data available</p>
          )}
       </div>
    );

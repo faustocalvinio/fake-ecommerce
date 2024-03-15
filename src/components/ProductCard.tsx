@@ -78,7 +78,7 @@ export const ProductCard = (product: Product) => {
          />
 
          <div className="px-5 pb-5">
-            <Link to={`/id/${product.id}`}>
+            <Link to={`/product/${product.id}`}>
                <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white underline hover:text-gray-300">
                   {product.title}
                </h5>

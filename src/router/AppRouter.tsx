@@ -20,7 +20,7 @@ export const AppRouter = () => {
                path="/product-sin-prefetch/:id"
                element={<ProductSinPrefetch />}
             />
-            <Route path="/id/:id" element={<ProductPage />} />
+            <Route path="/product/:id" element={<ProductPage />} />
          </Routes>
       </BrowserRouter>
    );

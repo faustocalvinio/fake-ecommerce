@@ -27,7 +27,7 @@ export const CartItemComponent = ({
          <td className="p-2"></td>
          <td className="p-2 flex flex-col">
             <Link
-               to={`/id/${id}`}
+               to={`/product/${id}`}
                className="font-medium text-gray-800 hover:underline dark:text-white text-xl"
             >
                {title.slice(0, 30)}
