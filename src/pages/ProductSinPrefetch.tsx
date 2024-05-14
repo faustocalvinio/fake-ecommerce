@@ -44,7 +44,7 @@ export const ProductSinPrefetch = () => {
          ...item,
          quantity,
       });
-      toast.success(`Product ${title.slice(0, 20)} added successfully`, {
+      toast.success(`Product ${item.title.slice(0, 20)} added successfully`, {
          className: "dark:bg-black dark:text-white border dark:border-gray-600",
          duration: 2000,
       });
