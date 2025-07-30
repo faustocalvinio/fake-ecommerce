@@ -4,7 +4,7 @@ import { queryClient } from "../main";
 import { StarIcon } from "../components/icons";
 import { Product } from "../interfaces";
 
-export const SinPrefetch = () => {
+export const ProductsPage = () => {
    // Accede al cliente de consulta
    function renderStarIcons(rating: number) {
       const stars = [];
@@ -30,7 +30,10 @@ export const SinPrefetch = () => {
          {productsData ? (
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                {productsData.map((product: Product) => (
-                  <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                  <div
+                     key={product.id}
+                     className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                  >
                      <img
                         className="p-8 rounded-t-lg"
                         src={product.image}

@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./main.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { AppRouter } from "./router/AppRouter.tsx";
 export const queryClient = new QueryClient({
    defaultOptions: {
       queries: {
@@ -14,7 +14,7 @@ export const queryClient = new QueryClient({
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(
    <QueryClientProvider client={queryClient}>
-      <App />
+      <AppRouter />
       <ReactQueryDevtools initialIsOpen />
    </QueryClientProvider>
 );

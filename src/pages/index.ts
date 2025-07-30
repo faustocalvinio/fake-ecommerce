@@ -1,7 +1,5 @@
-export { ProductSinPrefetch } from "./ProductSinPrefetch";
-
-export { SinPrefetch } from "./SinPrefetch";
-
+export { ProductPage } from "./ProductPage";
+export { ProductsPage } from "./ProductsPage";
 export { CartPage } from "./CartPage";
 export { HomePage } from "./HomePage";
-export { ProductPage } from "./ProductPage";
+export { PrefetchedProductPage } from "./PrefetchedProductPage";
